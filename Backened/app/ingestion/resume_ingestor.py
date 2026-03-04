@@ -2,7 +2,7 @@ import pymupdf as pdf
 import re
 import pathlib as path
 import phonenumbers
-import exception
+from Backened.app.exception.resume_exception import ResumeEncryptError, ResumeTextEmpty, ResumeFileNotFound, ResumeFileEmpty, ResumeCorrupted, InvalidTextInputError, LinkExtractionError, ResumeExtractionError
 
 def extract_text(file_path):
     try:
@@ -12,30 +12,30 @@ def extract_text(file_path):
         with pdf.open(filename= file_path)as doc:
             # checking if the file is password protected or not
             if doc.needs_pass:
-                raise exception.ResumeEncryptError(f"System could not open the encrypted and encoded file: {file_path}")
+                raise ResumeEncryptError(f"System could not open the encrypted and encoded file: {file_path}")
             
             for page in doc:
-                text += page.get_text()
+                text += page.get_text("Text")
         
-        # if the text is expty 
+        # if the text is empty 
         if text.strip() == "":
-            raise exception.ResumeTextEmpty("No text is extracted and the output is empty")   
+            raise ResumeTextEmpty("No text is extracted and the output is empty")   
              
         return text # returning the reference where the text is stored      
     except FileNotFoundError as e:
-        raise exception.ResumeFileNotFound(f"System could not locate : {file_path}") from e
+        raise ResumeFileNotFound(f"System could not locate : {file_path}") from e
     except pdf.EmptyFileError as e:
-        raise exception.ResumeFileEmpty(f"No Data is found in the file: {file_path}") from e
+        raise ResumeFileEmpty(f"No Data is found in the file: {file_path}") from e
     except pdf.FileDataError as e:
-        raise exception.ResumeCorrupted(f"Not able to read the file : {file_path}") from e
+        raise ResumeCorrupted(f"Not able to read the file : {file_path}") from e
     except Exception as e:
-        raise exception.ResumeExtractionError("An unknown error is occured during text extraction") from e
+        raise ResumeExtractionError("An unknown error is occured during text extraction") from e
     
 def extract_links(text):
     try:
         # check whether the text is a str or not
         if not isinstance(text, str):
-            raise exception.InvalidTextInputError("Text is not a String")
+            raise InvalidTextInputError("Text is not a String")
         
         # regex patterns for finding the github , email and linkedin from the text
         github_pattern = r'(?i)(?:https?:\/\/)?(?:www\.)?github\.com\/([A-Za-z0-9-]{1,39})\/?'
@@ -48,7 +48,7 @@ def extract_links(text):
         email = re.findall(email_pattern, text)
         
         #for finding the phone numbers
-        matches = phonenumbers.PhoneNumberMatcher(text)
+        matches = phonenumbers.PhoneNumberMatcher(text, region= 'In')
         phonenos = []
         for match in matches:
             phoneno = phonenumbers.format_number(match.number, phonenumbers.PhoneNumberFormat.E164)
@@ -63,7 +63,7 @@ def extract_links(text):
         }
         
     except Exception as e:
-        raise exception.LinkExtractionError("An unknow error is occured during the link extraction") from e
+        raise LinkExtractionError("An unknow error is occured during the link extraction") from e
     
     
     
