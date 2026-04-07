@@ -1,12 +1,13 @@
 import numpy as np
 import re
 from Backened.app.embeddings.similarity import cosine_similarity
+from Backened.app.embeddings.embedding_model import EmbeddingModel
 
 
 class FeatureBuilder:
 
-    def __init__(self, embedding_model):
-        self.embedding_model = embedding_model
+    def __init__(self):
+        self.embedding_model = EmbeddingModel()
 
     # ----------------------------
     # Safe Embedding Helper

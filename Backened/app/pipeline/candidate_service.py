@@ -25,8 +25,8 @@ class CandidateService:
 
     def __init__(self):
         self.db = Database.get_db()
-        self.embedding_model = EmbeddingModel()
-        self.feature_builder = FeatureBuilder(self.embedding_model)
+        # self.embedding_model = EmbeddingModel()
+        self.feature_builder = FeatureBuilder()
         self.github_client = GitHubClient()
 
     def process_candidate(self, job_id: str, resume_path: str):

@@ -1,12 +1,9 @@
-from Backened.app.storage.mongodb import Database
 from pymongo.errors import OperationFailure
 
 my_schema = {
         "$jsonSchema": {
             "bsonType": "object",
             "required": ["job_id", "resume", "features", "ranking", "metadata"],
-            "validationLevel": "strict",
-            "validationAction": "error",
             "properties" : {
                 "job_id": {
                     "bsonType": "string"
@@ -63,16 +60,17 @@ my_schema = {
         }
     }
 
-db = Database.get_db()
+def initialize_candidates_collection(db):
+    try:
+        db.create_collection(
+            "candidates",
+            validator=my_schema,
+            validationLevel= "strict",
+            validationAction= "error",
+        )
+        db.candidates.create_index("job_id")
+        db.candidates.create_index("ranking.prediction_score")
+        db.candidates.create_index("ranking.hr_decision")
+    except OperationFailure:
+        pass  # Collection already exists
 
-try:
-    db.create_collection(
-        "candidates",
-        validator=my_schema
-    )
-except OperationFailure:
-    pass  # Collection already exists
-
-db.candidates.create_index("job_id")
-db.candidates.create_index("ranking.prediction_score")
-db.candidates.create_index("ranking.hr_decision")

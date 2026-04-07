@@ -1,0 +1,70 @@
+
+"version" : 1,
+"disable_existing_loggers": false,
+"formatters":{
+  "detailed":{
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(module)s - %(lineno)d - %(message)s"
+  }
+},
+"handlers":{
+  "console":{
+    "class": "logging.StreamHandler",
+    "level": "DEBUG",
+    "formatter": "detailed",
+    "stream": "ext://sys.stdout"
+  },
+  "storage":{
+    "class": "logging.handlers.RotatingFileHandler",
+    "level": "DEBUG",
+    "formatter": "detailed",
+    "file": "logs/storage.log",
+    "BackupCount": 5,
+    "maxBytes": 10485760
+  },
+  "resume":{
+    "class": "logging.handlers.RotatingFileHandler",
+    "level": "DEBUG",
+    "formatter": "detailed",
+    "maxBytes": 10485760,
+    "BackupCount": 5,
+    "file": "logs/resume.log"
+  },
+  "job":{
+    "class": "logging.handlers.RotatingFileHandler",
+    "level": "DEBUG",
+    "formatter": "detailed",
+    "maxBytes": 10485760,
+    "BackupCount": 5,
+    "file": "logs/job.log"
+  },
+  "main":{
+    "class": "logging.handlers.RotatingFileHandler",
+    "level": "DEBUG",
+    "formatter": "detailed",
+    "maxBytes": 10485760,
+    "BackupCount": 5,
+    "file": "logs/main.log"
+  }
+},
+"loggers":{
+  "storage":{
+    "handlers": ["console", "storage"],
+    "level": "DEBUG",
+    "propagate": false
+  },
+  "resume": {
+    "handlers": ["console", "resume"],
+    "level": "DEBUG",
+    "propagate": false
+  },
+  "job": {
+    "handlers": ["console", "job"],
+    "level": "DEBUG",
+    "propagate": false
+  },
+  "main": {
+    "handlers": ["console", "main"],
+    "level": "DEBUG",
+    "propagate": false
+  }
+}

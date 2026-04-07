@@ -7,10 +7,10 @@ from typing import List, Dict, Any
 import numpy as np
 
 from Backened.app.storage.mongodb import Database
-from Backened.app.config import get_config
+from Backened.app.config import load_config
 from Backened.app.utils.logger import logger
 
-config = get_config()
+config = load_config()
 
 
 class BaselineRanker:
@@ -24,7 +24,8 @@ class BaselineRanker:
     def normalize_years(
         self, 
         years: float, 
-        max_years: int = config.MAX_YEARS_EXPERIENCE
+        max_years: int = 0
+        # config.MAX_YEARS_EXPERIENCE
     ) -> float:
         """
         Normalize years of experience to [0, 1] range.

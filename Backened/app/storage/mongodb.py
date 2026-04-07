@@ -1,10 +1,15 @@
 from pymongo import MongoClient, errors
-import os
-from Backened.app.utils.logger import logger
+from Backened.app.config import load_config
+from Backened.app.utils.logger import get_logger
+    
+config = load_config()
 
-MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017/")
-DATABASE_NAME = os.getenv("DATABASE_NAME", "skill_match_AI")
+MONGO_URL = config["Database"]["MONGO_URL"]
+DATABASE_NAME = config["Database"]["DATABASE_NAME"]
+MONGO_TIMEOUT_MS = config["Database"]["MONGO_TIMEOUT_MS"]
+MONGO_CONNECT_TIMEOUT_MS = config["Database"]["MONGO_CONNECT_TIMEOUT_MS"]
 
+logger = get_logger("storage")
 
 class Database:
     _client: MongoClient = None
@@ -15,8 +20,8 @@ class Database:
             if cls._client is None:
                 cls._client = MongoClient(
                     MONGO_URL,
-                    serverSelectionTimeoutMS=5000,
-                    connectTimeoutMS=10000
+                    serverSelectionTimeoutMS= MONGO_TIMEOUT_MS,
+                    connectTimeoutMS= MONGO_CONNECT_TIMEOUT_MS
                 )
 
             cls._client.admin.command("ping")

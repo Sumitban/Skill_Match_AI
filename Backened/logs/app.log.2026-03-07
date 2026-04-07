@@ -1,0 +1,41 @@
+2026-03-07 02:07:04,455 | INFO | main_logger | JobService initialized
+2026-03-07 02:07:30,559 | INFO | main_logger | JobService initialized
+2026-03-07 02:08:20,680 | INFO | main_logger | JobService initialized
+2026-03-07 02:09:21,081 | INFO | main_logger | JobService initialized
+2026-03-07 02:09:41,429 | INFO | main_logger | JobService initialized
+2026-03-07 02:19:09,859 | INFO | main_logger | JobService initialized
+2026-03-07 02:19:39,761 | INFO | main_logger | JobService initialized
+2026-03-07 02:20:05,257 | INFO | main_logger | JobService initialized
+2026-03-07 02:21:09,049 | INFO | main_logger | JobService initialized
+2026-03-07 02:23:56,062 | INFO | main_logger | JobService initialized
+2026-03-07 02:24:16,130 | INFO | main_logger | JobService initialized
+2026-03-07 02:31:22,942 | INFO | main_logger | JobService initialized
+2026-03-07 02:32:08,107 | INFO | main_logger | JobService initialized
+2026-03-07 02:32:29,195 | INFO | main_logger | JobService initialized
+2026-03-07 02:42:01,053 | INFO | main_logger | job is send for creation
+2026-03-07 02:43:32,961 | INFO | main_logger | JobService initialized
+2026-03-07 02:43:53,846 | INFO | main_logger | JobService initialized
+2026-03-07 02:44:14,021 | INFO | main_logger | JobService initialized
+2026-03-07 02:45:35,239 | INFO | main_logger | job is send for creation
+2026-03-07 02:47:52,751 | INFO | main_logger | JobService initialized
+2026-03-07 02:48:13,327 | INFO | main_logger | JobService initialized
+2026-03-07 02:48:38,829 | INFO | main_logger | JobService initialized
+2026-03-07 02:48:58,898 | INFO | main_logger | JobService initialized
+2026-03-07 02:49:27,912 | INFO | main_logger | job is send for creation
+2026-03-07 02:49:28,298 | INFO | main_logger | Job created: 0607833d-7a9f-4bae-854b-792599fbebea
+2026-03-07 02:51:39,836 | INFO | main_logger | job is send for creation
+2026-03-07 02:51:39,912 | INFO | main_logger | Job created: 4f0d29ea-20fd-4a2e-bff2-5ce938a2d763
+2026-03-07 11:26:56,061 | INFO | main_logger | JobService initialized
+2026-03-07 11:29:21,767 | INFO | main_logger | JobService initialized
+2026-03-07 11:29:43,880 | INFO | main_logger | JobService initialized
+2026-03-07 11:33:49,934 | INFO | main_logger | JobService initialized
+2026-03-07 11:34:21,753 | ERROR | main_logger | Error uploading candidates for job "0607833d-7a9f-4bae-854b-792599fbebea": CandidateService.storage() missing 1 required positional argument: 'job_id'
+2026-03-07 11:35:28,949 | INFO | main_logger | JobService initialized
+2026-03-07 11:35:50,765 | INFO | main_logger | JobService initialized
+2026-03-07 11:36:11,954 | INFO | main_logger | JobService initialized
+2026-03-07 11:38:42,723 | ERROR | main_logger | Error uploading candidates for job "0607833d-7a9f-4bae-854b-792599fbebea": Error storing file: [Errno 2] No such file or directory: 'storage/uploads/8a5e25ab-5f28-4ac6-acb5-b496754c7516.pdf'
+2026-03-07 11:40:34,807 | INFO | main_logger | JobService initialized
+2026-03-07 11:40:56,098 | INFO | main_logger | JobService initialized
+2026-03-07 11:41:58,241 | ERROR | main_logger | Failed task 69abc1ae605c40270b74aeb3: Job with id data/58659a41-e95b-42e0-bbf3-7f5245840306.pdf not found
+2026-03-07 11:41:58,249 | ERROR | main_logger | Failed task 69abc1ae605c40270b74aeb3: Job with id data/58659a41-e95b-42e0-bbf3-7f5245840306.pdf not found
+2026-03-07 11:41:58,254 | ERROR | main_logger | Failed task 69abc1ae605c40270b74aeb3: Job with id data/58659a41-e95b-42e0-bbf3-7f5245840306.pdf not found
